@@ -34,7 +34,7 @@ public class SpringLogbackMdcExampleApplication {
 		registrationBean.setOrder(2);
 		return registrationBean;
 	}
-
+/*
 	@Bean
 	public EmbeddedServletContainerCustomizer containerCustomizer() {
 		return (container -> {
@@ -44,4 +44,5 @@ public class SpringLogbackMdcExampleApplication {
 			container.addErrorPages(error401Page, error404Page, error500Page);
 		});
 	}
+*/	
 }
