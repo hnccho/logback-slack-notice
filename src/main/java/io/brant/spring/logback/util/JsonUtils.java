@@ -65,7 +65,7 @@ public class JsonUtils {
 		}
 	}
 
-	public static <T extends Collection> T fromJson(String jsonStr, CollectionType collectionType) {
+	public static <T extends Collection<?>> T fromJson(String jsonStr, CollectionType collectionType) {
 		try {
 			return getMapper().readValue(jsonStr, collectionType);
 		} catch (Exception e) {

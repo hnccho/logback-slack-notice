@@ -1,7 +1,5 @@
 package io.brant.spring.logback.util;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 import org.slf4j.spi.MDCAdapter;
 
@@ -20,7 +18,7 @@ public class MDCUtil {
 
 	public static final String AGENT_DETAIL_MDC = "AGENT_DETAIL_MDC";
 
-	private static Logger logger = LoggerFactory.getLogger(MDCUtil.class);
+//	private static Logger logger = LoggerFactory.getLogger(MDCUtil.class);
 
 	public static void set(String key, String value) {
 		mdc.put(key, value);
