@@ -2,8 +2,10 @@ package io.brant.spring.logback;
 
 import io.brant.spring.logback.filters.LogbackMdcFilter;
 import io.brant.spring.logback.filters.MultiReadableHttpServletRequestFilter;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.boot.context.embedded.ErrorPage;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
@@ -34,15 +36,20 @@ public class SpringLogbackMdcExampleApplication {
 		registrationBean.setOrder(2);
 		return registrationBean;
 	}
-/*
+	
 	@Bean
 	public EmbeddedServletContainerCustomizer containerCustomizer() {
-		return (container -> {
-			ErrorPage error401Page = new ErrorPage(HttpStatus.UNAUTHORIZED, "/errors/401");
-			ErrorPage error404Page = new ErrorPage(HttpStatus.NOT_FOUND, "/errors/404");
-			ErrorPage error500Page = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/errors/500");
-			container.addErrorPages(error401Page, error404Page, error500Page);
-		});
+	    return new MyCustomizer();
 	}
-*/	
+	
+	private static class MyCustomizer implements EmbeddedServletContainerCustomizer {
+
+	    @Override
+	    public void customize(ConfigurableEmbeddedServletContainer container) {
+	        container.addErrorPages(new ErrorPage(HttpStatus.UNAUTHORIZED, "/errors/401"));
+	        container.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND, "/errors/404"));
+	        container.addErrorPages(new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/errors/500"));
+	    }
+
+	}
 }
