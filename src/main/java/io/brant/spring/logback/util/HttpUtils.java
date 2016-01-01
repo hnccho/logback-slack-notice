@@ -31,8 +31,8 @@ public class HttpUtils {
 
 	public static Map<String, String> getCurrentUser() {
 		Map<String, String> mockUser = new HashMap<>();
-		mockUser.put("name", "brant");
-		mockUser.put("userGroup", "STANDARD");
+		mockUser.put("name", "hchcho");
+		mockUser.put("userGroup", "ADMIN");
 		return mockUser;
 	}
 }
